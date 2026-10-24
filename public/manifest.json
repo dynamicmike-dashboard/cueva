@@ -1,0 +1,30 @@
+{
+  "short_name": "La Cueva",
+  "name": "La Cueva Del Chango",
+  "description": "Auténtica comida mexicana con el encanto de Playa del Carmen — Calle 38, Playa del Carmen",
+  "icons": [
+    {
+      "src": "/cueva-icon192x.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/cueva-logo512x.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/cueva-favicon32x.png",
+      "type": "image/png",
+      "sizes": "32x32",
+      "purpose": "any"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#FDFCF6",
+  "theme_color": "#1A2B1A",
+  "display": "standalone",
+  "orientation": "portrait",
+  "prefer_related_applications": false
+}

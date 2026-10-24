@@ -1,0 +1,35 @@
+{
+  "version": 2,
+  "cleanUrls": false,
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Content-Security-Policy", "value": "frame-ancestors *" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ],
+  "rewrites": [
+    { "source": "/api/chat", "destination": "/api/index.ts" },
+    { "source": "/api/(.*)", "destination": "/api/index.ts" },
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/staff", "destination": "/staff.html" },
+    { "source": "/reset-password", "destination": "/index.html" },
+    { "source": "/((?!assets|images|menus|api|admin|staff|favicon\\.ico|sw\\.js|manifest\\.json|icon-.*\\.png|vite\\.svg|debug\\.html|reset-password).*)", "destination": "/index.html" }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/reminders",
+      "schedule": "0 13 * * *"
+    },
+    {
+      "path": "/api/cron/cleanup-storage",
+      "schedule": "0 9 1 * *"
+    },
+    {
+      "path": "/api/cron/keepalive",
+      "schedule": "0 2 * * *"
+    }
+  ]
+}

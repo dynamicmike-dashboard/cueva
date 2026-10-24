@@ -1,0 +1,16 @@
+node_modules
+dist
+.vercel
+.git
+scripts
+*.log
+.env.local
+.env
+package-lock.json
+README.md
+docs/
+test/
+src/tests/
+*.map
+.vscode/
+.idea/

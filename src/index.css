@@ -1,0 +1,316 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'MyriadPro-Regular';
+  src: url('/fonts/MyriadPro-Regular.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+  --font-serif: "MyriadPro-Regular", Georgia, serif;
+  --font-sans: "MyriadPro-Regular", system-ui, sans-serif;
+  --color-primary: #065C2F;
+  --color-primary-dark: #043d1f;
+}
+
+:root {
+  /* Refined Premium Palette - Very Light Ice Green Background & Dark Green Accents */
+  --bg-deep: #EAF6F0; /* very light ice green shade */
+  --bg-surface: #F4FBF7; /* almost imperceptible ice green background */
+  --bg-glass: rgba(244, 251, 247, 0.95); /* light green glass panel */
+  --primary: #065C2F; /* Dark Green from the logo as the primary accent */
+  --primary-beige: #F4FBF7; /* Ice green background variable */
+  --primary-glow: rgba(6, 92, 47, 0.15); /* logo green glow */
+  --text-main: #065C2F; /* dark green text for perfect readability and branding */
+  --text-muted: rgba(6, 92, 47, 0.6);
+  --accent: #065C2F; /* dark green accent */
+}
+
+/* Scope variables and overrides for the Admin Portal to use a premium light/pastel theme */
+.admin-theme {
+  --bg-deep: #EAF6F0;
+  --bg-surface: #F4FBF7;
+  --bg-glass: rgba(244, 251, 247, 0.95);
+  --primary: #065C2F; /* Dark Green */
+  --primary-beige: #F4FBF7; /* Ice green background */
+  --primary-glow: rgba(6, 92, 47, 0.15);
+  --text-main: #065C2F;
+  --text-muted: rgba(6, 92, 47, 0.6);
+  --accent: #E8D3A7; /* Gold/Beige */
+}
+
+.admin-theme input, 
+.admin-theme select, 
+.admin-theme textarea {
+  background-color: #ffffff !important;
+  border: 2px solid rgba(6, 92, 47, 0.2) !important;
+  color: #065C2F !important;
+  color-scheme: light;
+}
+
+.admin-theme input::placeholder {
+  color: rgba(6, 92, 47, 0.4) !important;
+}
+
+.admin-theme input:focus, 
+.admin-theme select:focus, 
+.admin-theme textarea:focus {
+  border-color: #065C2F !important;
+  background-color: #ffffff !important;
+  box-shadow: 0 0 0 4px rgba(6, 92, 47, 0.15) !important;
+}
+
+.admin-theme label {
+  color: #065C2F !important;
+}
+
+/* Class mapping overrides to convert dark tailwind patterns to light theme */
+.admin-theme .bg-white\/5 {
+  background-color: #ffffff !important;
+  border-color: rgba(6, 92, 47, 0.15) !important;
+}
+
+.admin-theme .bg-white\/10 {
+  background-color: rgba(6, 92, 47, 0.05) !important;
+  border-color: rgba(6, 92, 47, 0.15) !important;
+}
+
+.admin-theme .border-white\/5,
+.admin-theme .border-white\/10,
+.admin-theme .border-white\/20 {
+  border-color: rgba(6, 92, 47, 0.15) !important;
+}
+
+.admin-theme .text-white {
+  color: #065C2F !important;
+}
+
+.admin-theme .text-white\/20,
+.admin-theme .text-white\/30,
+.admin-theme .text-white\/40,
+.admin-theme .text-white\/50,
+.admin-theme .text-white\/60,
+.admin-theme .text-white\/70,
+.admin-theme .text-white\/80 {
+  color: rgba(6, 92, 47, 0.6) !important;
+}
+
+.admin-theme .text-white\/90 {
+  color: #065C2F !important;
+}
+
+.admin-theme .bg-\[\#043d1f\] {
+  background-color: #EAF6F0 !important;
+}
+
+.admin-theme .bg-\[\#043d1f\]\/20 {
+  background-color: rgba(6, 92, 47, 0.05) !important;
+}
+
+.admin-theme .bg-\[\#F8F9FA\]\/10 {
+  background-color: rgba(6, 92, 47, 0.05) !important;
+}
+
+.admin-theme .text-red-100 {
+  color: #b91c1c !important;
+}
+
+.admin-theme .bg-red-500\/20 {
+  background-color: rgba(239, 68, 68, 0.15) !important;
+}
+
+.admin-theme .text-red-400 {
+  color: #b91c1c !important;
+}
+
+.admin-theme .bg-black\/20 {
+  background-color: #ffffff !important; /* Clean neutral white for columns */
+  border-color: rgba(6, 92, 47, 0.1) !important;
+}
+
+.admin-theme .bg-black\/30 {
+  background-color: #FAF8F2 !important; /* Premium light warm beige/sand */
+  border-color: rgba(6, 92, 47, 0.15) !important;
+}
+
+.admin-theme .bg-black\/10 {
+  background-color: rgba(6, 92, 47, 0.02) !important;
+}
+
+.admin-theme .text-\[\#F8F9FA\] {
+  color: #065C2F !important;
+}
+
+/* Calendar Event Cards - Light Theme Overrides */
+.admin-theme .bg-zinc-800\/60,
+.admin-theme .bg-zinc-700\/80 {
+  background-color: #EAEBED !important; /* Premium light grey for Amate reservations */
+  border-color: rgba(6, 92, 47, 0.1) !important;
+  color: #065C2F !important;
+}
+
+.admin-theme .bg-emerald-900\/60,
+.admin-theme .bg-emerald-900\/80,
+.admin-theme .bg-emerald-600,
+.admin-theme button.bg-emerald-600 {
+  background-color: #C8E6D9 !important; /* Lighter green for Cueva reservations */
+  border-color: rgba(6, 92, 47, 0.15) !important;
+  color: #065C2F !important;
+}
+
+.admin-theme .bg-emerald-600 .text-white,
+.admin-theme button.bg-emerald-600 .text-white {
+  color: #065C2F !important;
+}
+
+/* Time display boxes inside cards */
+.admin-theme .bg-black\/40 {
+  background-color: rgba(6, 92, 47, 0.06) !important;
+  border-color: rgba(6, 92, 47, 0.15) !important;
+}
+
+/* Eye and icon action buttons inside cards */
+.admin-theme .bg-white\/5 {
+  background-color: #ffffff !important;
+  border-color: rgba(6, 92, 47, 0.15) !important;
+}
+
+.admin-theme .text-white\/20,
+.admin-theme .text-zinc-50,
+.admin-theme .text-emerald-50 {
+  color: #065C2F !important;
+}
+
+
+body {
+  margin: 0;
+  /* Light Ice Green Gradient Background */
+  background: radial-gradient(circle at top right, #F4FBF7 0%, #EAF6F0 100%) no-repeat fixed;
+  color: var(--text-main);
+  font-family: "MyriadPro-Regular", sans-serif;
+  font-size: 18px; /* Increased base size */
+  line-height: 1.6; /* Better legibility */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Premium Typography */
+h1, h2, h3, h4 {
+  color: var(--text-main) !important;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+
+label {
+  font-size: 14px; /* Slightly larger */
+  font-weight: 700;
+  color: var(--primary) !important;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  display: block;
+  opacity: 0.9;
+}
+
+/* Enhanced Glassmorphism */
+.glass-panel-heavy {
+  background: var(--bg-glass) !important;
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  border-radius: 40px;
+}
+
+.p-dashboard {
+  padding: 3rem;
+}
+
+@media (max-width: 640px) {
+  .p-dashboard { padding: 1.5rem; }
+  body { font-size: 17px; }
+  h1 { font-size: 2.5rem; }
+}
+
+/* Premium Interactive Elements */
+.btn-premium {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%) !important;
+  color: var(--primary-beige) !important;
+  font-weight: 800;
+  font-size: 16px;
+  padding: 1.2rem 2.5rem;
+  border-radius: 24px;
+  border: none;
+  box-shadow: 0 15px 35px var(--primary-glow);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-premium:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 25px 50px var(--primary-glow);
+  filter: brightness(1.1);
+}
+
+.btn-premium:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Input Refinement */
+@layer base {
+  input, select, textarea {
+    background-color: #ffffff !important;
+    border: 2px solid rgba(6, 92, 47, 0.2) !important;
+    color: var(--text-main) !important;
+    color-scheme: light;
+    font-weight: 600;
+    font-size: 16px !important; /* Larger for mobile tap targets */
+    padding: 1rem 1.2rem !important;
+    border-radius: 16px !important;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--primary) !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 4px rgba(6, 92, 47, 0.15);
+    outline: none;
+  }
+
+  input::placeholder {
+    color: rgba(6, 92, 47, 0.4);
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 10px;
+  border: 2px solid var(--bg-deep);
+}
+
+/* Micro-animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}

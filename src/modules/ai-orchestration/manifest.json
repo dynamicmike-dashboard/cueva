@@ -1,0 +1,36 @@
+{
+  "module": "ai-orchestration",
+  "tenant": "lacuevadelchango",
+  "version": "1.0.0",
+  "enabled": true,
+  "guardrails": {
+    "hallucinationPolicy": "file-based-memory-only",
+    "knowledgeBase": "public/menus/lacueva-knowledge-base.md",
+    "operationalRules": "wiki/operational_rules.md",
+    "fallbackToAmate": false
+  },
+  "teable": {
+    "tenantColumn": "restaurant_id",
+    "tenantValue": "lacuevadelchango",
+    "configTable": "restaurant_secrets",
+    "blackoutTable": "blackout_periods",
+    "reservationsTable": "reservations",
+    "chatLogsTable": "chat_logs",
+    "menuItemsTable": "menu_items"
+  },
+  "persona": "./config/defaultPersona.ts",
+  "contextAnchor": "./utils/contextAnchor.ts",
+  "handler": "./handlers/processMessage.ts",
+  "serverHandler": "api/modules/ai-orchestration/handlers/processMessage.ts",
+  "models": {
+    "primary": "gemini-2.5-flash",
+    "fallback": "gpt-4o-mini",
+    "candidates": [
+      "gemini-3.1-flash-lite",
+      "gemini-3.5-flash",
+      "gemini-2.5-flash",
+      "gemini-2.5-pro"
+    ]
+  },
+  "notes": "All Teable queries must filter by restaurant_id = 'lacuevadelchango' where tenant column exists. Legacy 'restaurant' text column should filter on 'La Cueva Del Chango' / 'lacuevadelchango'. TinyTalk deprecated — Teable is single source of truth."
+}

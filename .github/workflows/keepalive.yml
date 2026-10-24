@@ -1,0 +1,15 @@
+name: Supabase Keepalive
+on:
+  schedule:
+    - cron: '0 0 */3 * *' # Runs at 00:00 UTC every 3 days (72 hours)
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Supabase to prevent sleep
+        run: |
+          curl -s -X GET "https://nycrsxoqfzolketspedi.supabase.co/rest/v1/profiles?limit=1" \
+          -H "apikey: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55Y3JzeG9xZnpvbGtldHNwZWRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MDUxMTAsImV4cCI6MjA4OTA4MTExMH0.r5x-95_ccu1Bx_xqzSHGhoQj88jtesspEMXxx6fht38" \
+          -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55Y3JzeG9xZnpvbGtldHNwZWRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MDUxMTAsImV4cCI6MjA4OTA4MTExMH0.r5x-95_ccu1Bx_xqzSHGhoQj88jtesspEMXxx6fht38"

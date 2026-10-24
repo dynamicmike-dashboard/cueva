@@ -1,0 +1,9 @@
+node_modules
+dist
+.vercel
+.git
+scripts
+server.ts
+*.log
+.env.local
+.env

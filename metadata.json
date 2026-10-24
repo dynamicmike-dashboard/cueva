@@ -1,0 +1,7 @@
+{
+  "name": "Amate 38 Playa Concierge",
+  "description": "Luxury jungle-themed concierge and menu for Amate 38 in Playa del Carmen.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

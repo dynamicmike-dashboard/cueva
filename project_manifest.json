@@ -1,0 +1,58 @@
+{
+  "appName": "La Cueva Del Chango PWA",
+  "restaurantId": "lacuevadelchango",
+  "version": "1.0.0",
+  "project_root": "F:\\Mike d drive\\Mike Webs\\Client Projects\\Amate and Changa\\La Cueva del Chango\\cueva-pwa",
+  "install_path": "F:\\Antigravity IDE",
+  "devPort": 3003,
+  "teableTenant": "lacuevadelchango",
+  "teableBaseId": "bseycH4L66iLE60akaY",
+  "baseTheme": {
+    "primary": "#1A2B1A",
+    "primaryDark": "#0F1F0F",
+    "primaryBeige": "#E8D3A7",
+    "accent": "#C2B280",
+    "secondary": "#8B5E3C",
+    "background": "#FDFCF6",
+    "surface": "#F4FBF7",
+    "glass": "rgba(244,251,247,0.95)",
+    "textMain": "#1A2B1A",
+    "textMuted": "rgba(26,43,26,0.6)",
+    "caveStone": "#3D2B1F",
+    "jungleGlow": "rgba(26,43,26,0.15)",
+    "themeColor": "#1A2B1A",
+    "backgroundColor": "#FDFCF6"
+  },
+  "branding": {
+    "logoPath": "/images/branding/lacueva-logo.png",
+    "favicon": "/images/branding/favicon.ico",
+    "pwaIcon192": "/images/branding/icon-192.png",
+    "pwaIcon512": "/images/branding/icon-512.png",
+    "heroPath": "/images/branding/hero.webp"
+  },
+  "modules": {
+    "ai-orchestration": {
+      "enabled": true,
+      "tenantScope": "lacuevadelchango",
+      "teableFilter": "restaurant_id = lacuevadelchango",
+      "personaFile": "src/modules/ai-orchestration/config/defaultPersona.ts",
+      "contextAnchor": "src/modules/ai-orchestration/utils/contextAnchor.ts",
+      "handler": "api/modules/ai-orchestration/handlers/processMessage.ts"
+    }
+  },
+  "knowledgeBase": {
+    "primary": "public/menus/lacueva-knowledge-base.md",
+    "operationalRules": "wiki/operational_rules.md",
+    "summariesDir": "wiki/summaries/"
+  },
+  "ports": {
+    "dev": 3003,
+    "preview": 4173
+  },
+  "pwa": {
+    "shortName": "La Cueva",
+    "name": "La Cueva Del Chango",
+    "display": "standalone",
+    "orientation": "portrait"
+  }
+}

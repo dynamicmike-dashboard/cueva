@@ -1,0 +1,8 @@
+{
+  "projectId": "nycrsxoqfzolketspedi",
+  "api": {
+    "url": "https://nycrsxoqfzolketspedi.supabase.co",
+    "anonKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55Y3JzeG9xZnpvbGtldHNwZWRpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzM1MDUxMTAsImV4cCI6MjA4OTA4MTExMH0.r5x-95_ccu1Bx_xqzSHGhoQj88jtesspEMXxx6fht38",
+    "serviceRoleKey": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55Y3JzeG9xZnpvbGtldHNwZWRpIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc3MzUwNTExMCwiZXhwIjoyMDg5MDgxMTEwfQ.TL2eHCNOKmqTTQu10A20zeEWbaJ_XzXS1r8tFNgw-70"
+  }
+}

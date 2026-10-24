@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>La Cueva Del Chango — Auténtica comida mexicana con el encanto de Playa del Carmen</title>
+    <meta name="description" content="La Cueva Del Chango — Auténtica comida mexicana con el encanto de Playa del Carmen. Calle 38 Norte entre 5ta Avenida y el mar, Playa del Carmen. Abierto Lun–Sáb 8:00–22:30, Dom 8:00–14:00." />
+    <meta name="keywords" content="La Cueva Del Chango, Playa del Carmen, restaurante autentico, Calle 38, comida mexicana, Playa del Carmen restaurante" />
+    <meta property="og:title" content="La Cueva Del Chango — Playa del Carmen" />
+    <meta property="og:description" content="Auténtica comida mexicana con el encanto de Playa del Carmen. Reservas Lun–Sáb 14:30–21:30." />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:image" content="/cueva-logo512x.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/cueva-favicon32x.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1A2B1A" />
+    <link rel="apple-touch-icon" href="/cueva-icon192x.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/cueva-icon192x.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/cueva-logo512x.png" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="La Cueva Del Chango">
+    <script>
+      window.onerror = function(msg, url, line, col, error) {
+        var errStr = 'RUNTIME ERROR: ' + msg + ' (at ' + line + ':' + col + ')';
+        var div = document.createElement('div');
+        div.style.cssText = 'position:fixed;top:0;left:0;width:100%;z-index:999999;background:red;color:white;padding:15px;font-size:12px;font-family:monospace;border-bottom:3px solid white;word-break:break-all;';
+        div.innerText = errStr;
+        (document.body || document.documentElement).appendChild(div);
+      };
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+          for(let registration of registrations) { registration.unregister(); }
+        });
+      }
+    </script>
+    <meta name="format-detection" content="telephone=no">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
