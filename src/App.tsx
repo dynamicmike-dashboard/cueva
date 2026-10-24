@@ -406,8 +406,11 @@ const ReserveSection = ({ lang, userId, prefillData }: { lang: Language, userId:
 
   useEffect(() => {
     const fetchBlackouts = async () => {
-       const data = await teableFrontend.list('blackout_periods', { take: 500 });
-       if (data) setBlackouts(data.map(r => r.fields));
+       const res = await fetch('/api/blackouts');
+       if (res.ok) {
+         const result = await res.json();
+         if (result.data) setBlackouts(result.data);
+       }
      };
     fetchBlackouts();
     
