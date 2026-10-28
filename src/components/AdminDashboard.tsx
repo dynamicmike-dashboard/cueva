@@ -100,7 +100,7 @@ const DASHBOARD_TRANSLATIONS = {
     confirmPassword: "Confirm Password",
     updatePassword: "Update Password",
     cancelBackLogin: "Cancel and Back to Login",
-    adminEmail: "Admin Email",
+    adminEmail: "Admin Email or Password",
     forgotPassword: "Forgot password?",
     resetEmailSent: "Password reset email sent! Please check your spam folder too.",
     authenticating: "Authenticating...",
@@ -185,14 +185,14 @@ const DASHBOARD_TRANSLATIONS = {
     saveSuccess: "Guardado exitosamente",
     saveFailed: "Error al guardar",
     // Login
-    managementPortal: "Portal de Gestión",
+    managementPortal: "Portal de Gestión de La Cueva",
     setNewPassword: "Nueva Contraseña",
     enterNewPassword: "Ingrese una nueva contraseña segura para su cuenta.",
     newPassword: "Nueva Contraseña",
     confirmPassword: "Confirmar Contraseña",
     updatePassword: "Actualizar Contraseña",
     cancelBackLogin: "Cancelar y Volver al Inicio",
-    adminEmail: "Correo de Admin",
+    adminEmail: "Correo o Contraseña de Admin",
     forgotPassword: "¿Olvidó su contraseña?",
     resetEmailSent: "¡Correo de restablecimiento enviado! Revise su spam también.",
     authenticating: "Autenticando...",
@@ -335,7 +335,7 @@ const ReservationsPanel: React.FC<{
           onRefresh={onRefresh}
           lang={lang.code as 'en' | 'es'}
           staffName="Admin"
-          defaultRestaurant={filter === 'All' ? 'Amate 38' : filter === 'Cueva' ? 'La Cueva del Chango' : 'Amate 38'}
+          defaultRestaurant={filter === 'All' ? 'La Cueva del Chango' : filter === 'Cueva' ? 'La Cueva del Chango' : 'La Cueva del Chango'}
           password={password}
         />
       )}
@@ -723,7 +723,7 @@ const ReviewsPanel: React.FC<{ lang: Language; password: string }> = ({ lang, pa
   };
 
   const sendEmail = (review: any) => {
-    const subject = encodeURIComponent(lang.code === 'es' ? `Mensaje del Gerente de Amate 38` : `Message from Amate 38 Manager`);
+    const subject = encodeURIComponent(lang.code === 'es' ? `Mensaje del Gerente de La Cueva del Chango` : `Message from La Cueva del Chango Manager`);
     const body = encodeURIComponent(suggestion);
     window.location.href = `mailto:${review.email}?subject=${subject}&body=${body}`;
     markResponded(review.id);
@@ -1399,30 +1399,22 @@ initAuth();
     setIsLoading(true);
     setError('');
     try {
-      const res = await fetch('/api/auth/login', {
+      // Verify credentials with server
+      const res = await fetch('/api/admin/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ password: email.toLowerCase().includes('@') ? email : password })
       });
       const data = await res.json();
-      if (!res.ok || !data.user) {
+      if (!data.success) {
         setError(data.error || 'Invalid credentials');
         setIsLoading(false);
         return;
       }
-
-      // Check if user is actually authorized for admin (whitelist or checking DB)
-      // Since they want an admin authorized email, we enforce it by letting any valid 
-      // Supabase user fetch the admin password to verify access.
-      const res2 = await fetch(`/api/admin/restaurant-secrets?password=${data.user?.id || ''}`);
-      const data2 = await res2.json();
-      if (data2.success && data2.data?.admin_password) {
-        setApiPassword(data2.data.admin_password);
-        setIsLoggedIn(true);
-      } else {
-        setError('Unauthorized access');
-        await fetch('/api/auth/logout', { method: 'POST' });
-      }
+      
+      // Use the entered password/email for subsequent API calls
+      setApiPassword(email.toLowerCase().includes('@') ? email : password);
+      setIsLoggedIn(true);
     } catch (err) {
       setError('Connection error');
     } finally {
@@ -1495,7 +1487,7 @@ initAuth();
             <Leaf size={32} color={COLORS.sandyGold} />
           </div>
           <h2 className="text-2xl font-serif font-bold text-[var(--primary)] text-center mb-2">{d.adminPortal}</h2>
-          <p className="text-white/30 text-xs text-center mb-8 italic">Amate 38 · {d.managementPortal}</p>
+          <p className="text-white/30 text-xs text-center mb-8 italic">La Cueva del Chango · {d.managementPortal}</p>
 
           <div className="space-y-4">
             {isRecovering ? (

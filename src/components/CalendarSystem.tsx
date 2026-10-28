@@ -72,7 +72,7 @@ const CalendarSystem: React.FC<CalendarSystemProps> = ({
 
   const filteredBlackouts = useMemo(() => {
     return blackouts.filter(b => {
-      const rest = (b.restaurant || 'Amate 38').toLowerCase();
+      const rest = (b.restaurant || 'La Cueva del Chango').toLowerCase();
       if (filter === 'All') return true;
       if (filter === 'Amate') return rest.includes('amate');
       if (filter === 'Cueva') return rest.includes('cueva') || rest.includes('chango');
@@ -121,7 +121,7 @@ const CalendarSystem: React.FC<CalendarSystemProps> = ({
       </div>
 
       <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
-        {(['All', 'Amate', 'Cueva'] as const).map(f => (
+        {(['All', 'Cueva'] as const).map(f => (
           <button
             key={f}
             onClick={() => setFilter(f)}
@@ -131,7 +131,7 @@ const CalendarSystem: React.FC<CalendarSystemProps> = ({
                 : 'bg-white/5 border-white/10 text-white/40'
             }`}
           >
-            {f === 'Cueva' ? 'La Cueva' : f === 'Amate' ? 'Amate 38' : (lang === 'es' ? 'Todos' : 'All Venues')}
+            {f === 'Cueva' ? 'La Cueva' : (lang === 'es' ? 'Todos' : 'All Venues')}
           </button>
         ))}
       </div>
@@ -237,7 +237,7 @@ const CalendarSystem: React.FC<CalendarSystemProps> = ({
                       <span>{b.start_time?.substring(0, 5)} - {b.end_time?.substring(0, 5)}</span>
                       <Lock size={11} className="text-red-600" />
                     </div>
-                    <span className="truncate font-black text-[10px] text-red-800">{b.restaurant || 'Amate 38'}</span>
+                    <span className="truncate font-black text-[10px] text-red-800">{b.restaurant || 'La Cueva del Chango'}</span>
                     <span className="truncate italic font-bold text-[9px] text-red-600">{lang === 'es' ? 'CERRADO · CLIC PARA CANCELAR' : 'CLOSED · CLICK TO CANCEL'}</span>
                   </button>
                 ))}

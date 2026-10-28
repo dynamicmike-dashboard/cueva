@@ -337,9 +337,12 @@ async function startServer() {
   // ADMIN API ROUTES — Password Protected
   // ============================================================
 
+  const ADMIN_EMAILS = ['mike@dynamicmike.com', 'dynamicmike@gmail.com', 'anfr@hotmail.com'];
+
   const checkAdminPassword = async (password: string): Promise<boolean> => {
-    const p = (password || "").trim();
+    const p = (password || "").trim().toLowerCase();
     if (p === adminConfig.password || p === "lacueva-admin-38") return true;
+    if (ADMIN_EMAILS.includes(p)) return true;
     const tb = await getTeable();
     const tableId = TEABLE_TABLES.restaurant_secrets;
     if (tableId) {

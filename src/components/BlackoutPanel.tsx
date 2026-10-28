@@ -57,7 +57,7 @@ const BlackoutPanel: React.FC<BlackoutPanelProps> = ({ lang, password, onRefresh
     start_time: '08:00', 
     end_time: '22:30', 
     reason: '',
-    restaurant: 'Amate 38' 
+    restaurant: 'La Cueva del Chango' 
   });
 
   const fetchBlackouts = async () => {
@@ -158,7 +158,7 @@ const BlackoutPanel: React.FC<BlackoutPanelProps> = ({ lang, password, onRefresh
       });
       const data = await res.json();
       if (data.success) {
-        setNewBlackout({ date: '', start_time: '08:00', end_time: isSunday ? '14:00' : '22:30', reason: '', restaurant: 'Amate 38' });
+        setNewBlackout({ date: '', start_time: '08:00', end_time: isSunday ? '14:00' : '22:30', reason: '', restaurant: 'La Cueva del Chango' });
         setRangeMode('custom');
         fetchBlackouts();
         if (onRefreshCalendar) onRefreshCalendar();
@@ -237,7 +237,7 @@ const BlackoutPanel: React.FC<BlackoutPanelProps> = ({ lang, password, onRefresh
                 onChange={e => setNewBlackout({...newBlackout, restaurant: e.target.value})}
                 className="w-full bg-white/5 border border-white/10 rounded-2xl px-4 py-3 text-white outline-none focus:border-[var(--primary)]/60 transition-all appearance-none cursor-pointer text-xs sm:text-sm font-bold"
               >
-                <option value="Amate 38" className="bg-[var(--primary-beige)] text-black">Amate 38</option>
+                <option value="La Cueva del Chango" className="bg-[var(--primary-beige)] text-black">La Cueva del Chango</option>
                 <option value="La Cueva del Chango" className="bg-[var(--primary-beige)] text-black">La Cueva del Chango</option>
               </select>
               <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--primary)] z-10">
@@ -365,7 +365,7 @@ const BlackoutPanel: React.FC<BlackoutPanelProps> = ({ lang, password, onRefresh
                         }
                       })()}
                       <span className={`text-[10px] px-3 py-1 rounded-full font-black uppercase tracking-widest ${b.restaurant?.toLowerCase().includes('cueva') ? 'bg-emerald-500/20 text-emerald-400' : 'bg-[var(--primary)]/20 text-[var(--primary)]'}`}>
-                        {b.restaurant || 'Amate 38'}
+                        {b.restaurant || 'La Cueva del Chango'}
                       </span>
                     </p>
                     <p className="text-sm text-white/50 flex items-center gap-2 mt-1 font-medium italic">
@@ -378,7 +378,7 @@ const BlackoutPanel: React.FC<BlackoutPanelProps> = ({ lang, password, onRefresh
                 <div className="flex items-center gap-2">
                   <button 
                     onClick={() => {
-                      setNewBlackout({ id: b.id, date: b.date, start_time: b.start_time, end_time: b.end_time, reason: b.reason || '', restaurant: b.restaurant || 'Amate 38' });
+                      setNewBlackout({ id: b.id, date: b.date, start_time: b.start_time, end_time: b.end_time, reason: b.reason || '', restaurant: b.restaurant || 'La Cueva del Chango' });
                       setRangeMode('custom');
                     }} 
                     className="p-4 text-[var(--primary)]/40 hover:text-[var(--primary)] hover:bg-[var(--primary)]/10 rounded-2xl transition-all"

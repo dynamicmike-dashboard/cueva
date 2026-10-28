@@ -126,7 +126,7 @@ const StaffApp: React.FC = () => {
             <Leaf size={48} className="text-[var(--primary)]" />
           </div>
           <div className="space-y-2">
-            <h1 className="text-5xl font-serif font-black text-[var(--text-main)] italic tracking-tighter">AMATE <span className="text-[var(--primary)]">38</span></h1>
+            <h1 className="text-5xl font-serif font-black text-[var(--text-main)] italic tracking-tighter">LA CUEVA <span className="text-[var(--primary)]">DEL CHANGO</span></h1>
             <p className="text-[var(--primary)] text-[12px] uppercase font-black tracking-[0.5em] mt-2">{s.operationalPortal}</p>
           </div>
 

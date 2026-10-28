@@ -78,7 +78,7 @@ const ReservationModal: React.FC<ReservationModalProps> = ({ reservation, onClos
     guests: reservation?.guests || '2',
     date: reservation?.date || new Date().toISOString().split('T')[0],
     time: convertTo24Hour(reservation?.time) || (new Date().toLocaleTimeString('en-US', { hour12: false, hour: '2-digit', minute: '2-digit', timeZone: 'America/Cancun' })),
-    restaurant: reservation?.restaurant || defaultRestaurant || 'Amate 38',
+    restaurant: reservation?.restaurant || defaultRestaurant || 'La Cueva del Chango',
   });
 
   const isEditing = !!reservation;
@@ -273,7 +273,6 @@ const ReservationModal: React.FC<ReservationModalProps> = ({ reservation, onClos
               <label className="text-[10px] uppercase font-bold text-[var(--primary)] tracking-widest flex items-center gap-2"><MapPin size={12}/> Venue</label>
               <div className="relative">
                 <select value={formData.restaurant} onChange={e => setFormData({...formData, restaurant: e.target.value})} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-white outline-none focus:border-[var(--primary)]/60 appearance-none cursor-pointer">
-                  <option value="Amate 38" className="text-black bg-[var(--primary-beige)]">Amate 38</option>
                   <option value="La Cueva del Chango" className="text-black bg-[var(--primary-beige)]">La Cueva del Chango</option>
                 </select>
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-[var(--primary)] z-10">
