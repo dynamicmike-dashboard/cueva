@@ -340,23 +340,33 @@ async function startServer() {
   const ADMIN_EMAILS = ['mike@dynamicmike.com', 'dynamicmike@gmail.com', 'anfr@hotmail.com'];
 
   const checkAdminPassword = async (password: string): Promise<boolean> => {
-    const p = (password || "").trim().toLowerCase();
-    if (p === adminConfig.password || p === "lacueva-admin-38") return true;
-    if (ADMIN_EMAILS.includes(p)) return true;
-    const tb = await getTeable();
-    const tableId = TEABLE_TABLES.restaurant_secrets;
-    if (tableId) {
-      try {
-        const records = await tb.findMany('restaurant_secrets', [], { take: 1 });
-        const data = records[0]?.fields;
-        if (data && data.admin_password && data.admin_password.trim() === p) {
-          return true;
+    try {
+      const p = (password || "").trim().toLowerCase();
+      if (!p) return false;
+      
+      // Check whitelist first (no Teable call needed)
+      if (p === adminConfig.password || p === "lacueva-admin-38") return true;
+      if (ADMIN_EMAILS.includes(p)) return true;
+      
+      // Fallback to Teable
+      const tb = await getTeable();
+      const tableId = TEABLE_TABLES.restaurant_secrets;
+      if (tableId) {
+        try {
+          const records = await tb.findMany('restaurant_secrets', [], { take: 1 });
+          const data = records[0]?.fields;
+          if (data && data.admin_password && data.admin_password.trim().toLowerCase() === p) {
+            return true;
+          }
+        } catch (e) {
+          console.error("Auth Diagnostic Error:", e);
         }
-      } catch (e) {
-        console.error("Auth Diagnostic Error:", e);
       }
+      return false;
+    } catch (err) {
+      console.error('[checkAdminPassword] Unexpected error:', err);
+      return false;
     }
-    return false;
   };
 
   // Get all reservations
@@ -794,7 +804,9 @@ async function startServer() {
   app.post('/api/admin/verify', async (req, res) => {
     try {
       const { password } = req.body;
+      console.log('[verify] Attempt with:', password ? 'provided' : 'empty');
       const ok = await checkAdminPassword(password);
+      console.log('[verify] Result:', ok);
       if (ok) {
         res.json({ success: true });
       } else {
