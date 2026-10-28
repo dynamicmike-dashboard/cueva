@@ -803,7 +803,8 @@ async function startServer() {
   // ============================================================
   app.post('/api/admin/verify', async (req, res) => {
     try {
-      const { password } = req.body;
+      const body = await req.json().catch(() => ({}));
+      const password = body?.password;
       console.log('[verify] Attempt with:', password ? 'provided' : 'empty');
       const ok = await checkAdminPassword(password);
       console.log('[verify] Result:', ok);
@@ -814,7 +815,7 @@ async function startServer() {
       }
     } catch (err: any) {
       console.error('[verify] Error:', err);
-      res.status(500).json({ success: false, error: err.message });
+      res.status(500).json({ success: false, error: err?.message || 'Internal error' });
     }
   });
 
