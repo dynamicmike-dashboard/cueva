@@ -792,11 +792,17 @@ async function startServer() {
   // ADMIN AUTH — Verify password
   // ============================================================
   app.post('/api/admin/verify', async (req, res) => {
-    const { password } = req.body;
-    if (await checkAdminPassword(password)) {
-      res.json({ success: true });
-    } else {
-      res.status(401).json({ success: false, error: 'Invalid password' });
+    try {
+      const { password } = req.body;
+      const ok = await checkAdminPassword(password);
+      if (ok) {
+        res.json({ success: true });
+      } else {
+        res.status(401).json({ success: false, error: 'Invalid password' });
+      }
+    } catch (err: any) {
+      console.error('[verify] Error:', err);
+      res.status(500).json({ success: false, error: err.message });
     }
   });
 
