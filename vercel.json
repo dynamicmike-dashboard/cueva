@@ -11,8 +11,6 @@
     }
   ],
   "rewrites": [
-    { "source": "/api/chat", "destination": "/api/index.ts" },
-    { "source": "/api/(.*)", "destination": "/api/index.ts" },
     { "source": "/admin", "destination": "/admin.html" },
     { "source": "/staff", "destination": "/staff.html" },
     { "source": "/reset-password", "destination": "/index.html" },
